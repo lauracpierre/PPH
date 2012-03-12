@@ -1,9 +1,12 @@
 \documentclass{article}
 \usepackage{fullpage} % Agrandit les dimensions du texte (hauteur, largeur,
-                      % etc.) par rapport à celles par défaut. Attention
+                      % etc.) par rapport ¬à celles par d¬éfaut. Attention
                       % ce package ne se trouve pas dans toutes les
                       % distributions LaTeX
 \usepackage[francais]{babel}
+%\usepackage[latin1]{inputenc}
+\usepackage[utf8]{inputenc} 
+%\usepackage[T1]{fontenc}
 
 \title{PPH}
 \author{Pierre Laurac}
@@ -12,8 +15,109 @@
 \begin{document}
 \maketitle
 
-% Déclaration de la table des métières
+% D√©claration de la table des m¬éti¬ères
 \tableofcontents
+\newpage
+\section{Introduction}
+Le Projet Personnel en Humanit√©s (PPH) est un projet que tout ing√©nieur INSA doit r√©aliser lors de son cursus du second cycle. C'est une r√©flexion personnelle que nous pouvons r√©aliser sur presque tous les sujets et ne doit pas forcement √™tre en phase avec notre parcours ou le d√©partement auquel nous appartenons.
 
-\section{Introduction}	Le Projet Personnel en Humanités (PPH) est un projet que tout ingénieur INSA doit réaliser lors de son cursus du second cycle. C’est une réflexion personnelle que nous pouvons réaliser sur presque tous les sujets et ne doit pas forcement être en phase avec notre parcours ou le département auquel nous appartenons. Ce projet est encadré par un enseignant tuteur, et le sujet que nous choisissons  doit-être validé par une commission. La réalisation de ce projet doit être soutenue devant un jury de deux personnes dont le tuteur. L’intérêt de ce projet ici est double : il permet de mener une réflexion sur un sujet qui nous tient à cœur, avec lequel nous avons une affinité particulière, mais également de faire un retour sur un projet, une problématique plus grande, qui a été la gestion d’un projet de groupe, la réalisation d’un travail difficile, sans méthodes particulières.\section{Le commencement}\subsection{Description du fil rouge}	Tout a commencé en début de troisième année au département informatique de l’INSA de Lyon. Nous avons eu une présentation en amphi d’un projet appelé « fil rouge », optionnel, regroupant de 5 à 8 étudiants, de départements différents ou non, sur un thème non imposé. De plus, ce projet étant facultatif, il ne donne lieu à aucune notation mais permet cependant d’éviter de réaliser un autre TP ‘imposé’ par le corps enseignant.	Ce concept m’a immédiatement séduit, car rare sont les opportunités en école ou nous pouvons nous lancer dans un projet ou nous définissons notre cahier des charges. Je me suis donc mis à la recherche d’une idée originale, où je pouvais écrire une application iPhone, étant très intéressé par cela, mais ne trouvant jamais le temps pour le faire.C’est en réalité le projet qui est venu à moi, puisqu’un groupe d’amis est venu me parler, me demandant de rejoindre leur projet, et il leur manquait des développeurs iPhone. J’ai été séduit par l’idée, dont la description se trouve ci-dessous.\subsection{Klaim}\subsubsection{Le contexte}	Avec le développement des ‘Smartphones’, ces téléphones possédant un système d’exploitation complexe permettant de réaliser de plus en plus de tâches, les développeurs de tout horizons se sont mis à développer des applications plus ou moins utiles. Suite au lancement de l’iPhone d’Apple, ce fut le tour à Google de réaliser Android et ainsi de suite.	Ces sociétés ont donc mis à disposition des professionnels des outils permettant de réaliser des applications de plus en plus complexes afin de réaliser tel ou tel programme. 	Nous connaissons tous les prix démesurés que les fournisseurs d’accès aux téléphones proposent à leur client malgré l’arrivée récente des forfaits dits « illimités ». Dans un contexte où la technologie mobile se développe de plus en plus, et ce pour tous les âges, il est aberrant  pour nous de devoir payer les SMS . Si les forfaits actuels démocratisent les SMS illimités, leur envoi à des destinataires venant d’autres pays est toujours surtaxé. 	BlackBerry tente de répondre à cette problématique grâce à son très connu BlackBerry Messenger (BBM) mais connaît de très nombreux problèmes (serveurs crashant constamment par exemple). De plus, l’autre très grande problématique d’aujourd’hui est le fait que ces services ne fonctionnent qu’avec une seule plateforme. Ainsi, un BBM ne peut-être utilisé qu’avec des utilisateurs de BlackBerry possédant un compte BBM. 	Apple décida de réaliser le même genre de service, appelé iMessage, mais se confronte aux même problème : l’unicité de la plateforme supportée. C’est afin de répondre aux deux problématiques citées ci-dessus que notre projet débute.  \subsubsection{Description du projet}	Notre projet est donc simple et permet de répondre aux problèmes cités ci-dessus. Développer des applications mobiles et Web permettant l’envoi de messages utilisant la 3G. Ce système, multiplateforme, permet d’éviter les coûts d’envois relatifs aux opérateurs téléphoniques. En effet, si ces derniers font souvent payer les SMS, les données cellulaires 3G sont comprises dans les forfaits pour les Smartphone.	Nous avions à l’époque quelques concurrents au service fonctionnant correctement, mais notre projet s’étendait au delà de ce qu’ils proposaient. Si leur système propose l’envoie de messages comme le notre, ces derniers ne sont pas sauvegardés sur leurs serveurs. Cela leur pose alors deux problèmes principaux :-	Ils ne peuvent proposer un service Web permettant la lecture des messages envoyés et reçus, ainsi que l’envoie de nouveaux messages.-	Les messages sont stockés sur le téléphone des personnes utilisant le service uniquement. Si une personne change de téléphone, ils risquent alors de perdre les conversations existantes.Le point central de notre service est notre serveur, gardant tous les messages (sauf s’ils sont supprimés par l’utilisateur bien entendu) permettant donc d’apporter une solution viable aux deux points expliqués ci-dessus.	Le sujet était donc lancé : notre service devait permettre d’envoyer des messages depuis les plateformes suivantes :-	Apple (iPhone, iPod, iPad)-	Android-	Windows Phone Mobile-	BlackBerry-	Site web Ces plateformes se synchronisent avec le serveur principal permettant de récupérer et où mettre à jour les informations modifiées d’un compte depuis telle ou telle plateforme. Mais si ces services que les concurrents ne possèdent pas permettent de créer l’écart, ils nous ont en réalité énormément retardé sur la date de sortie, créant des problèmes que nous n’envisagions pas au premier abord. En effet, grâce à notre système, un compte utilisateur peut-être accédé par plusieurs plateformes. Si un utilisateur possède un iPhone et un iPad par exemple, il doit pouvoir utiliser les deux à sa convenance.  Se pose alors le problème de la synchronisation ! En effet, si je n’utilise pas mon iPad pendant quelques jours, mais activement l’application sur mon téléphone,  au moment du rallumage de l’iPad, il sera momentanément désynchronisé. Toute la difficulté sera donc de rapatrier uniquement les bonnes informations provenant du serveur et de mettre à jour l’iPad.\section{Un projet complet assurant un apprentissage continu}	Le sujet est simple, mais nous avons cependant soulevé un certain nombre de problèmes en très peu de temps. Nous allons maintenant discuter \subsection{Les problèmes liés au développement}\subsubsection{La problématique du développement multiplateforme}\subsubsection{Un apprentissage continu}\subsubsection{Un cahier des charges changeant}\subsection{Les problèmes liés au management de l’équipe}\subsubsection{Une avancé difficile}\subsubsection{Peu de connaissance en la matière}-	Les problèmes : o	Cahier des Chargeso	Managemento	Engagement de l’équipeo	Concurrence-	Les avantageso	Un besoin indéniableo	Un procédé ultra rapideo	Apprentissage complet\section{La gestion du temps et du projet}\subsection{Le temps, notre pire ennemi}\subsubsection{Un projet long a mener de front avec d’autres}\subsubsection{L’écart des concurrents}\subsection{Continuer le projet après la fin}\subsubsection{La démotivation au sein de l’équipe}\subsubsection{Près d’un an sans release}\subsection{Les outils mis en place}\subsubsection{Les outils de gestion}\subsubsection{Les outils de management}\section{Conclusion}
-\end{document}
+Ce projet est encadr√© par un enseignant tuteur, et le sujet que nous choisissons doit √™tre valid√© par une commission. La r√©alisation de ce projet doit √™tre soutenue devant un jury de deux personnes dont le tuteur. 
+
+L'int√©r√™t de ce projet ici est double : il permet de mener une r√©flexion sur un sujet qui nous tient √† coeur, avec lequel nous avons une affinit√© particuli√®re, mais √©galement de faire un retour sur un projet, une probl√©matique plus grande, qui a √©t√© la gestion d'un projet de groupe, la r√©alisation d'un travail difficile, sans m√©thodes particuli√®res.
+\section{Le commencement}
+\subsection{Description du fil rouge}
+	Tout a commenc√© en d√©but de troisi√®me ann√©e au d√©partement informatique de l'INSA de Lyon. Nous avons eu une pr√©sentation en amphi d'un projet appel√© "fil rouge", optionnel, regroupant de 5 √† 8 √©tudiants, de d√©partements diff√©rents ou non, sur un th√®me non impos√©. De plus, ce projet √©tant facultatif, il ne donne lieu √† aucune notation mais permet cependant d'√©viter de r√©aliser un autre TP impos√© par le corps enseignant.
+	
+	Ce concept m‚Äôa imm√©diatement s√©duit, car rare sont les opportunit√©s en √©cole ou nous pouvons nous lancer dans un projet ou nous d√©finissons notre cahier des charges. Je me suis donc mis √† la recherche d‚Äôune id√©e originale, o√π je pouvais √©crire une application iPhone, √©tant tr√®s int√©ress√© par cela, mais ne trouvant jamais le temps pour le faire.
+	
+	C‚Äôest en r√©alit√© le projet qui est venu √† moi, puisqu‚Äôun groupe d‚Äôamis est venu me parler, me demandant de rejoindre leur projet, et il leur manquait des d√©veloppeurs iPhone. J‚Äôai √©t√© s√©duit par l‚Äôid√©e, dont la description se trouve ci-dessous.
+\subsection{Klaim}
+\subsubsection{Le contexte}
+	Avec le d√©veloppement des ‚ÄòSmartphones‚Äô, ces t√©l√©phones poss√©dant un syst√®me d‚Äôexploitation complexe permettant de r√©aliser de plus en plus de t√¢ches, les d√©veloppeurs de tout horizons se sont mis √† d√©velopper des applications plus ou moins utiles. Suite au lancement de l‚ÄôiPhone d‚ÄôApple, ce fut le tour √† Google de r√©aliser Android et ainsi de suite.
+		Ces soci√©t√©s ont donc mis √† disposition des professionnels des outils permettant de r√©aliser des applications de plus en plus complexes afin de r√©aliser tel ou tel programme. 
+		Nous connaissons tous les prix d√©mesur√©s que les fournisseurs d‚Äôacc√®s aux t√©l√©phones proposent √† leur client malgr√© l‚Äôarriv√©e r√©cente des forfaits dits ¬´ illimit√©s ¬ª. Dans un contexte o√π la technologie mobile se d√©veloppe de plus en plus, et ce pour tous les √¢ges, il est aberrant  pour nous de devoir payer les SMS\footnote{SMS, abr√©viation de ‚ÄòShort Message System‚Äô, syst√®me permettant d‚Äôenvoyer un message court sur le t√©l√©phone d‚Äôun destinataire.}. Si les forfaits actuels d√©mocratisent les SMS illimit√©s, leur envoi √† des destinataires venant d‚Äôautres pays est toujours surtax√©. 
+		BlackBerry tente de r√©pondre √† cette probl√©matique gr√¢ce √† son tr√®s connu BlackBerry Messenger (BBM) mais conna√Æt de tr√®s nombreux probl√®mes (serveurs crashant constamment par exemple). De plus, l‚Äôautre tr√®s grande probl√©matique d‚Äôaujourd‚Äôhui est le fait que ces services ne fonctionnent qu‚Äôavec une seule plateforme. Ainsi, un BBM ne peut-√™tre utilis√© qu‚Äôavec des utilisateurs de BlackBerry poss√©dant un compte BBM. 
+		Apple d√©cida de r√©aliser le m√™me genre de service, appel√© iMessage, mais se confronte aux m√™me probl√®me : l‚Äôunicit√© de la plateforme support√©e. C‚Äôest afin de r√©pondre aux deux probl√©matiques cit√©es ci-dessus que notre projet d√©bute.  
+
+\subsubsection{Description du projet}
+	Notre projet est donc simple et permet de r√©pondre aux probl√®mes cit√©s ci-dessus. D√©velopper des applications mobiles et Web permettant l‚Äôenvoi de messages utilisant la 3G. Ce syst√®me, multiplateforme, permet d‚Äô√©viter les co√ªts d‚Äôenvois relatifs aux op√©rateurs t√©l√©phoniques. En effet, si ces derniers font souvent payer les SMS, les donn√©es cellulaires 3G sont comprises dans les forfaits pour les Smartphone.
+		Nous avions √† l‚Äô√©poque quelques concurrents au service fonctionnant correctement, mais notre projet s‚Äô√©tendait au del√† de ce qu‚Äôils proposaient. Si leur syst√®me propose l‚Äôenvoie de messages comme le notre, ces derniers ne sont pas sauvegard√©s sur leurs serveurs. Cela leur pose alors deux probl√®mes principaux :\begin{itemize}
+\item Ils ne peuvent proposer un service Web permettant la lecture des messages envoy√©s et re√ßus, ainsi que l‚Äôenvoie de nouveaux messages.
+\item Les messages sont stock√©s sur le t√©l√©phone des personnes utilisant le service uniquement. Si une personne change de t√©l√©phone, ils risquent alors de perdre les conversations existantes.
+\end{itemize}
+
+Le point central de notre service est notre serveur, gardant tous les messages (sauf s‚Äôils sont supprim√©s par l‚Äôutilisateur bien entendu) permettant donc d‚Äôapporter une solution viable aux deux points expliqu√©s ci-dessus.	Le sujet √©tait donc lanc√© : notre service devait permettre d‚Äôenvoyer des messages depuis les plateformes suivantes :
+\begin{itemize}
+\item Apple (iPhone, iPod, iPad)
+\item Android
+\item Windows Phone Mobile
+\item BlackBerry
+\item Site web
+\end{itemize}
+
+Ces plateformes se synchronisent avec le serveur principal permettant de r√©cup√©rer et o√π mettre √† jour les informations modifi√©es d‚Äôun compte depuis telle ou telle plateforme. Mais si ces services que les concurrents ne poss√®dent pas permettent de cr√©er l‚Äô√©cart, ils nous ont en r√©alit√© √©norm√©ment retard√© sur la date de sortie, cr√©ant des probl√®mes que nous n‚Äôenvisagions pas au premier abord. En effet, gr√¢ce √† notre syst√®me, un compte utilisateur peut-√™tre acc√©d√© par plusieurs plateformes. Si un utilisateur poss√®de un iPhone et un iPad par exemple, il doit pouvoir utiliser les deux √† sa convenance.  Se pose alors le probl√®me de la synchronisation ! En effet, si je n‚Äôutilise pas mon iPad pendant quelques jours, mais activement l‚Äôapplication sur mon t√©l√©phone,  au moment du rallumage de l‚ÄôiPad, il sera momentan√©ment d√©synchronis√©. Toute la difficult√© sera donc de rapatrier uniquement les bonnes informations provenant du serveur et de mettre √† jour l‚ÄôiPad.
+
+\section{Un projet complet assurant un apprentissage continu}
+	
+Le sujet est simple, mais nous avons cependant soulev√© un certain nombre de probl√®mes en tr√®s peu de temps. En plus de ceux √©nonc√©s dans la section pr√©c√©dente, intervient √©galement les langages de programmation. En effet, chaque plateforme poss√®de son propre langage, et il a donc fallu que chaque √©quipe de d√©veloppeur du projet se sp√©cialise dans un domaine particulier. 
+
+\subsection{Les probl√®mes li√©s au d√©veloppement}
+Mis √† part une ou deux personnes dans le groupe de travail, nous nous √©tions tous assign√©s dans un langage que nous souhaitions apprendre car outre le service que nous voulions commercialiser, notre but premier √©tait ici l'apprentissage, et c'√©tait celui de l'iPhone qui m'int√©ressait plus particuli√®rement. Je continuerai d'ailleurs par d√©velopper uniquement cet aspect dans cette partie.
+
+Chaque plateforme poss√®de donc un langage sp√©cifique (l'Objective-C et Cocoa pour Apple) et si nous connaissons les grands aspects et concepts de la programmation, il m'a fallu apprendre les sp√©cificit√©s de ce langage. Nous pouvons d√©gager trois grands aspects qu'il m'a fallu ma√Ætriser dans le cadre de ce projet : 
+\begin{itemize}
+	\item Les requ√™tes au serveur
+	\item La base de donn√©es
+	\item L'interface Graphique
+\end{itemize}
+Nous passerons un peu de temps √† expliquer la complexit√© de chacune des parties cit√©es ci-dessus.
+		\paragraph{Les requ√™tes au serveur}
+		Cette partie a certainement √©t√© la complexe dans sa r√©alisation mais pour autant celle qui a  re\c cue le plus de modifications. Le premier syst√®me de requ√™tage en place √©tait fonctionnel, mais le moindre changement √† effectuer √©tait un v√©ritable cauchemar. Apr√®s de nombreuses manipulation, j'ai donc d√©cid√© de le changer enti√®rement dans sa structure. Nous pouvons donc retrouver actuellement une majeure partie du code √©crit en premier lieu, mais son utilisation en est grandement simplifi√© aujourd'hui.
+		
+		\paragraph{La base de donn√©es}
+		Les bases de donn√©es sont un moyen efficace et simple √† mettre en oeuvre afin de sauvegarder des informations de mani√®re statique. Une premi√®re approche aurait donc √©t√© de reprendre une base dite classique avec l'approche que nous avions vu en cours. Ce n'est cependant pas le cas ici.
+		
+		Toujours dans une volont√© d'apprendre ce langage, j'ai d√©cid√© d'utiliser Coredata, qui est l'outils de pr√©dilection d'Apple pour les bases de donn√©es. Coredata est une base de donn√©es d√©guis√©es, en ce sens o√π Apple met √† disposition des d√©veloppeurs des moyens ``simplifi√©s '' mais utilise en r√©alit√© une base de donn√©es. Nous utilisons donc des appels de fonctions mis √† notre disposition par Apple, qui offre une surcouche √† une base de donn√©es. Cette simplification a √©t√© dans un premier temps un vrai casse-t√™te, tellement la logique est diff√©rente de celle d'une base normale. Cependant, aujourd'hui je ne regrette en rien ce choix de d√©veloppement.
+		
+		\paragraph{L'interface Graphique}
+		L'interface graphique a de tout temps √©t√© ce que je pr√©f√©rais de moins mais cet √©l√©ment est cependant indispensable puisque sans elle, nous n'aurions aucun utilisateur. Il est tout a fait envisageable de r√©aliser une interface non complexe, et c'est ce qui a √©t√© fait dans un premier temps. Cependant, nous souhaitions, dans un soucis de simplification d'utilisation pour l'utilisateur final, de reprendre enti√®rement l'interface de l'application des SMS de la plateforme sur laquelle nous nous trouvions. Ceci repr√©sente un challenge de taille puisqu'Apple est r√©ellement maniaque √† ce niveau l√†. 
+		
+		Nous avons cependant aujourd'hui une interface r√©ellement identique, et quand j'utilise l'un des deux services (SMS ou Klaim) il m'est difficile de savoir quelle application je suis en train d'utiliser.
+		
+\subsubsection{La probl√©matique du d√©veloppement multiplateforme}
+		Ceci est l'un des points les plus important du document, puisqu'il parle d'une probl√©matique d'envergure dans le monde de l'informatique d'aujourd'hui. De plus en plus de personnes ont des smartphones. Les d√©veloppeurs souhaitent donc d√©velopper des applications pour chacune des plateformes, mais cela demande √©norm√©ment de temps et de connaissance. Si j'ai de bonnes connaissances aujourd'hui pour iOS, je serais incapable de d√©velopper pour Andro√Ød.
+%\subsubsection{Un apprentissage continu}
+\subsubsection{Un cahier des charges √©voluant constamment}
+\subsection{Les probl√®mes li√©s au management de l'√©quipe}
+\subsubsection{Une avanc√© difficile}
+\subsubsection{Peu de connaissance en la mati√®re}
+
+\begin{itemize}
+\item Les probl√®mes :
+\begin{itemize}
+\item Cahier des Charges
+\item Management
+\item Engagement de l'√©quipe
+\item Concurrence
+\end{itemize}
+\item Les avantages
+\begin{itemize}
+\item Un besoin ind√©niable
+\item Un proc√©d√© ultra rapide
+\item Apprentissage complet
+\end{itemize}
+\end{itemize}
+
+\section{La gestion du temps et du projet}
+\subsection{Le temps, notre pire ennemi}
+\subsubsection{Un projet long a mener de front avec d'autres}
+\subsubsection{L'√©cart des concurrents}
+\subsection{Continuer le projet apr√®s la fin}
+\subsubsection{La d√©motivation au sein de l'√©quipe}
+\subsubsection{Pr√®s d'un an sans release}
+\subsection{Les outils mis en place}
+\subsubsection{Les outils de gestion}
+\subsubsection{Les outils de management}
+
+\section{Conclusion}
+\end{document}
