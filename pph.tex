@@ -34,19 +34,27 @@ L'intérêt de ce projet ici est double : il permet de mener une réflexion sur 
 \subsection{Klaim}
 \subsubsection{Le contexte}
 	Avec le développement des ‘Smartphones’, ces téléphones possédant un système d’exploitation complexe permettant de réaliser de plus en plus de tâches, les développeurs de tout horizons se sont mis à développer des applications plus ou moins utiles. Suite au lancement de l’iPhone d’Apple, ce fut le tour à Google de réaliser Android et ainsi de suite.
-		Ces sociétés ont donc mis à disposition des professionnels des outils permettant de réaliser des applications de plus en plus complexes afin de réaliser tel ou tel programme. 
-		Nous connaissons tous les prix démesurés que les fournisseurs d’accès aux téléphones proposent à leur client malgré l’arrivée récente des forfaits dits « illimités ». Dans un contexte où la technologie mobile se développe de plus en plus, et ce pour tous les âges, il est aberrant  pour nous de devoir payer les SMS\footnote{SMS, abréviation de ‘Short Message System’, système permettant d’envoyer un message court sur le téléphone d’un destinataire.}. Si les forfaits actuels démocratisent les SMS illimités, leur envoi à des destinataires venant d’autres pays est toujours surtaxé. 
-		BlackBerry tente de répondre à cette problématique grâce à son très connu BlackBerry Messenger (BBM) mais connaît de très nombreux problèmes (serveurs crashant constamment par exemple). De plus, l’autre très grande problématique d’aujourd’hui est le fait que ces services ne fonctionnent qu’avec une seule plateforme. Ainsi, un BBM ne peut-être utilisé qu’avec des utilisateurs de BlackBerry possédant un compte BBM. 
-		Apple décida de réaliser le même genre de service, appelé iMessage, mais se confronte aux même problème : l’unicité de la plateforme supportée. C’est afin de répondre aux deux problématiques citées ci-dessus que notre projet débute.  
+	
+	Ces sociétés ont donc mis à disposition des professionnels des outils permettant de réaliser des applications de plus en plus complexes afin de réaliser tel ou tel programme. 
+	
+	Nous connaissons tous les prix démesurés que les fournisseurs d’accès aux téléphones proposent à leur client malgré l’arrivée récente des forfaits dits « illimités ». Dans un contexte où la technologie mobile se développe de plus en plus, et ce pour tous les âges, il est aberrant  pour nous de devoir payer les SMS\footnote{SMS, abréviation de ‘Short Message System’, système permettant d’envoyer un message court sur le téléphone d’un destinataire.}. Si les forfaits actuels démocratisent les SMS illimités, leur envoi à des destinataires venant d’autres pays est toujours surtaxé. 
+	
+	BlackBerry tente de répondre à cette problématique grâce à son très connu BlackBerry Messenger (BBM) mais connaît de très nombreux problèmes (serveurs crashant constamment par exemple). De plus, l’autre très grande problématique d’aujourd’hui est le fait que ces services ne fonctionnent qu’avec une seule plateforme. Ainsi, un BBM ne peut-être utilisé qu’avec des utilisateurs de BlackBerry possédant un compte BBM. 
+	
+	Apple décida de réaliser le même genre de service, appelé iMessage, mais se confronte aux même problème : l’unicité de la plateforme supportée. C’est afin de répondre aux deux problématiques citées ci-dessus que notre projet débute.  
 
 \subsubsection{Description du projet}
 	Notre projet est donc simple et permet de répondre aux problèmes cités ci-dessus. Développer des applications mobiles et Web permettant l’envoi de messages utilisant la 3G. Ce système, multiplateforme, permet d’éviter les coûts d’envois relatifs aux opérateurs téléphoniques. En effet, si ces derniers font souvent payer les SMS, les données cellulaires 3G sont comprises dans les forfaits pour les Smartphone.
-		Nous avions à l’époque quelques concurrents au service fonctionnant correctement, mais notre projet s’étendait au delà de ce qu’ils proposaient. Si leur système propose l’envoie de messages comme le notre, ces derniers ne sont pas sauvegardés sur leurs serveurs. Cela leur pose alors deux problèmes principaux :\begin{itemize}
+	
+	Nous avions à l’époque quelques concurrents au service fonctionnant correctement, mais notre projet s’étendait au delà de ce qu’ils proposaient. Si leur système propose l’envoie de messages comme le notre, ces derniers ne sont pas sauvegardés sur leurs serveurs. Cela leur pose alors deux problèmes principaux :
+\begin{itemize}
 \item Ils ne peuvent proposer un service Web permettant la lecture des messages envoyés et reçus, ainsi que l’envoie de nouveaux messages.
 \item Les messages sont stockés sur le téléphone des personnes utilisant le service uniquement. Si une personne change de téléphone, ils risquent alors de perdre les conversations existantes.
 \end{itemize}
 
-Le point central de notre service est notre serveur, gardant tous les messages (sauf s’ils sont supprimés par l’utilisateur bien entendu) permettant donc d’apporter une solution viable aux deux points expliqués ci-dessus.	Le sujet était donc lancé : notre service devait permettre d’envoyer des messages depuis les plateformes suivantes :
+Le point central de notre service est notre serveur, gardant tous les messages (sauf s’ils sont supprimés par l’utilisateur bien entendu) permettant donc d’apporter une solution viable aux deux points expliqués ci-dessus.
+	
+Le sujet était donc lancé : notre service devait permettre d’envoyer des messages depuis les plateformes suivantes :
 \begin{itemize}
 \item Apple (iPhone, iPod, iPad)
 \item Android
@@ -85,33 +93,36 @@ Nous passerons un peu de temps à expliquer la complexité de chacune des partie
 		Nous avons cependant aujourd'hui une interface réellement identique, et quand j'utilise l'un des deux services (SMS ou Klaim) il m'est difficile de savoir quelle application je suis en train d'utiliser.
 		
 \subsubsection{La problématique du développement multiplateforme}
-		Ceci est l'un des points les plus important du document, puisqu'il parle d'une problématique d'envergure dans le monde de l'informatique d'aujourd'hui. De plus en plus de personnes ont des smartphones. Les développeurs souhaitent donc développer des applications pour chacune des plateformes, mais cela demande énormément de temps et de connaissance. Si j'ai de bonnes connaissances aujourd'hui pour iOS, je serais incapable de développer pour Androïd.
+		Ceci est l'un des points les plus important du document, puisqu'il parle d'une problématique d'envergure dans le monde de l'informatique d'aujourd'hui. De plus en plus de personnes ont des smartphones. Les développeurs souhaitent donc développer des applications pour chacune des plateformes, mais cela demande énormément de temps et de connaissance. Si j'ai de bonnes connaissances aujourd'hui pour iOS, je serais incapable de développer pour Androïd sans me plonger dans la documentation et de nombreux tutoriels. 
+		
+		C'est pour cette raison que nous étions autant de monde sur le projet. Il y avait initialement deux personnes par plateforme afin de combler le manque de connaissances que nous avions initialement.  C'est aujourd'hui l'une des plus grandes problématiques du moment avec la poussée de téléphones mobiles au sein de la société. Devant ce problème, des solutions ont été développées mais posent encore certains problèmes : 
+		\begin{itemize}
+			\item Réaliser un site web mobile permet de réduire considérablement le développement puisque le technologies à utiliser sont connues et nous n'avons qu'un seul code à écrire pour l'ensemble des plateformes. Cependant, nous ne pouvons rien sauvegarder sur la mémoire interne du téléphone ce qui peut être réellement problématique et critique selon le type d'applications que nous souhaitons développer, et nous n'avons surtout pas accès aux notifications, ces messages permettant d'indiquer à l'utilisateur un évènement particulier. 
+			\item Il existe aujourd'hui des Framework permettant de réduire la charge de travail mais le résultat obtenu n'est pas aussi satisfaisant que celui d'une application dite native.
+		\end{itemize}
 %\subsubsection{Un apprentissage continu}
 \subsubsection{Un cahier des charges évoluant constamment}
+		Un autre soucis important auquel nous avons été confronté initialement était le manque d'information sur ce que nous devions faire. Nous connaissions les idées directrices mais c'était tout. Nous apprenons lors de nos projets en école qu'il est important de bien étudier l'ensemble du projet afin de réaliser une conception répondant à toutes les exigences fonctionnelles comme non fonctionnelles. Une simple modification peut avoir d'importantes répercutions. 
+			
+		C'est exactement le problème que nous avons eu pour diverses raisons. Premièrement parce que nous avons eu de nombreux problèmes auxquels il a fallu trouver une solution. Ces dernières apportaient parfois les modifications dont nous parlions précédemment. Deuxièmement car nous n'avons pas réellement effectué de conception générale pour l'ensemble du projet. Nous demandions uniquement au chef de projet quelle était l'étape suivante une fois que nous avions terminé une partie. Cette façon de faire à posé de nombreux soucis et nous avons du constamment apporté des modifications à ce qui avait déjà été fait.
+		
+		Nous n'imaginions tout simplement pas l'ampleur du projet et c'est un peu pour cette raison que cela s'est passé ainsi.
 \subsection{Les problèmes liés au management de l'équipe}
 \subsubsection{Une avancé difficile}
 \subsubsection{Peu de connaissance en la matière}
 
-\begin{itemize}
-\item Les problèmes :
-\begin{itemize}
-\item Cahier des Charges
-\item Management
-\item Engagement de l'équipe
-\item Concurrence
-\end{itemize}
-\item Les avantages
-\begin{itemize}
-\item Un besoin indéniable
-\item Un procédé ultra rapide
-\item Apprentissage complet
-\end{itemize}
-\end{itemize}
 
 \section{La gestion du temps et du projet}
+		Nous maintenant passé à une analyse que nous pouvons maintenant réalisé puisque nous sommes suffisamment avancé dans notre quatrième année, qui est rappelons le centré autour de la gestion de projet et d'équipe.
+		
 \subsection{Le temps, notre pire ennemi}
 \subsubsection{Un projet long a mener de front avec d'autres}
+		Une autre problématique importante de notre projet était que celui était extra-scolaire bien que dans le cadre du fil rouge. La troisième année reste une année chargée avec les projets et les examens de fin d'année et devant un projet de cette taille le temps que nous avons afin de programmer est très important. J'ai passé la majeure partie de mes week-end à avancer sur le projet. J'aurai pu être bien plus efficace si j'avais connu le développement iOS avant mais ce n'était pas le cas.
+
 \subsubsection{L'écart des concurrents}
+		Un aspect que nous n'avons pas encore réellement étudié dans ce document est les concurrents. Ces derniers existent déjà sur ce marché et proposent des produits fonctionnement très bien mais comme nous l'avons déjà énoncé, notre application possèdent quelques points pouvant réellement faire la différence.
+		
+		Commencer notre projet avec un tel retard est cependant dommageable puisqu'en attendant, leur nombre de client augmente considérablement. Obtenir de nouveaux clients est bien plus facile que de les récupérer lorsqu'ils utilisent déjà un service plus ou moins identique.
 \subsection{Continuer le projet après la fin}
 \subsubsection{La démotivation au sein de l'équipe}
 \subsubsection{Près d'un an sans release}
