@@ -16,6 +16,7 @@
 \maketitle
 
 % Déclaration de la table des mtires
+\newpage
 \tableofcontents
 \newpage
 \section{Introduction}
@@ -30,29 +31,33 @@ L'intérêt de ce projet ici est double : il permet de mener une réflexion sur 
 	
 	Ce concept m’a immédiatement séduit, car rare sont les opportunités en école ou nous pouvons nous lancer dans un projet ou nous définissons notre cahier des charges. Je me suis donc mis à la recherche d’une idée originale, où je pouvais écrire une application iPhone, étant très intéressé par cela, mais ne trouvant jamais le temps pour le faire.
 	
-	C’est en réalité le projet qui est venu à moi, puisqu’un groupe d’amis est venu me parler, me demandant de rejoindre leur projet, et il leur manquait des développeurs iPhone. J’ai été séduit par l’idée, dont la description se trouve ci-dessous.
+	L'INSA ne possédant pas d'application iPhone réellement intéressante, je me suis lancé sur cette voie, puis je me suis renseigné s'il était possible de créer une application permettant d'accéder aux notes, aux cours, etc. Cependant, cette gestion est actuellement réalisée par département et n'est pas toujours disponible en ligne. La DSI du département m'a donc encouragé à chercher une autre idée, moins complexe à mettre en place, ne serait-ce que de leur côté.
+	
+	Je n'arrivais pas à trouver d'autre idée qui en vaille la peine, et c'est finalement le projet qui est venu à moi, puisqu’un groupe d’amis est venu me parler, me demandant de rejoindre leur projet, et il leur manquait des développeurs iPhone. J’ai été séduit par l’idée, dont la description se trouve ci-dessous.
 \subsection{Klaim}
 \subsubsection{Le contexte}
 	Avec le développement des ‘Smartphones’, ces téléphones possédant un système d’exploitation complexe permettant de réaliser de plus en plus de tâches, les développeurs de tout horizons se sont mis à développer des applications plus ou moins utiles. Suite au lancement de l’iPhone d’Apple, ce fut le tour à Google de réaliser Android et ainsi de suite.
 	
-	Ces sociétés ont donc mis à disposition des professionnels des outils permettant de réaliser des applications de plus en plus complexes afin de réaliser tel ou tel programme. 
+	Ces sociétés ont donc mis à disposition des professionnels des outils permettant de réaliser des applications de plus en plus complexes afin de réaliser les programmes qu'ils désiraient. 
 	
 	Nous connaissons tous les prix démesurés que les fournisseurs d’accès aux téléphones proposent à leur client malgré l’arrivée récente des forfaits dits « illimités ». Dans un contexte où la technologie mobile se développe de plus en plus, et ce pour tous les âges, il est aberrant  pour nous de devoir payer les SMS\footnote{SMS, abréviation de ‘Short Message System’, système permettant d’envoyer un message court sur le téléphone d’un destinataire.}. Si les forfaits actuels démocratisent les SMS illimités, leur envoi à des destinataires venant d’autres pays est toujours surtaxé. 
 	
-	BlackBerry tente de répondre à cette problématique grâce à son très connu BlackBerry Messenger (BBM) mais connaît de très nombreux problèmes (serveurs crashant constamment par exemple). De plus, l’autre très grande problématique d’aujourd’hui est le fait que ces services ne fonctionnent qu’avec une seule plateforme. Ainsi, un BBM ne peut-être utilisé qu’avec des utilisateurs de BlackBerry possédant un compte BBM. 
+	BlackBerry tente de répondre à cette problématique grâce à son très connu (BBM)\footnote{BlackBerry Messenger} mais connaît de très nombreux problèmes (serveurs crashant constamment par exemple). De plus, l’autre très grande problématique d’aujourd’hui à mes yeux est le fait que ces services ne fonctionnent qu’avec une seule plateforme. Ainsi, un BBM ne peut-être utilisé qu’avec des utilisateurs de BlackBerry possédant un compte BBM, ce qui réduit considérablement le nombre d'utilisateurs potentiels. 
 	
-	Apple décida de réaliser le même genre de service, appelé iMessage, mais se confronte aux même problème : l’unicité de la plateforme supportée. C’est afin de répondre aux deux problématiques citées ci-dessus que notre projet débute.  
+	Apple décida de réaliser le même genre de service, appelé iMessage, mais se confronte aux même problème : l’unicité de la plateforme supportée. Apple a l'avantage de se trouver sur la vague du succès en ce moment et vend de nombreux iPhone, iPad ainsi que des ordinateurs possédant iMessage. Le lancement a été réalisé avec iCloud, mais la migration des utilisateurs sur ce système provoque encore de nombreux problèmes et l'utilisation d'iMessage reste parfois complexe.
+	
+	C’est afin de répondre aux deux problématiques citées ci-dessus que notre projet débute.  
 
 \subsubsection{Description du projet}
-	Notre projet est donc simple et permet de répondre aux problèmes cités ci-dessus. Développer des applications mobiles et Web permettant l’envoi de messages utilisant la 3G. Ce système, multiplateforme, permet d’éviter les coûts d’envois relatifs aux opérateurs téléphoniques. En effet, si ces derniers font souvent payer les SMS, les données cellulaires 3G sont comprises dans les forfaits pour les Smartphone.
+	Notre idée est donc simple et permet de répondre aux problèmes cités ci-dessus. Développer des applications mobiles et Web permettant l’envoi de messages en utilisant internet. Ce système, multiplateforme, permet d’éviter les coûts d’envois relatifs aux opérateurs téléphoniques. En effet, si ces derniers font souvent payer les SMS, les données cellulaires 3G sont comprises dans les forfaits pour les Smartphone.
 	
-	Nous avions à l’époque quelques concurrents au service fonctionnant correctement, mais notre projet s’étendait au delà de ce qu’ils proposaient. Si leur système propose l’envoie de messages comme le notre, ces derniers ne sont pas sauvegardés sur leurs serveurs. Cela leur pose alors deux problèmes principaux :
+	Nous avions à l’époque quelques concurrents au service , mais notre projet s’étendait au delà de ce qu’ils proposaient. Si leur système propose l’envoie de messages comme le notre, ces derniers ne sont pas sauvegardés sur leurs serveurs. Cela leur pose alors deux problèmes principaux :
 \begin{itemize}
-\item Ils ne peuvent proposer un service Web permettant la lecture des messages envoyés et reçus, ainsi que l’envoie de nouveaux messages.
-\item Les messages sont stockés sur le téléphone des personnes utilisant le service uniquement. Si une personne change de téléphone, ils risquent alors de perdre les conversations existantes.
+\item Ils ne peuvent proposer un service Web permettant la lecture des messages envoyés et reçus, ainsi que l’envoie de nouveaux messages. C'est un atout très important à nos yeux, et nous essayons de nous démarquer entre autre grâce à ce point.
+\item Les messages sont stockés sur le téléphone des personnes utilisant le service uniquement. Si une personne change de téléphone, ils risquent alors de perdre les conversations existantes. Avec Klaim, ceci ne peut exister puisque si vous changez de téléphone, vous pouvez retrouver tous les messages que vous aviez précédemment.
 \end{itemize}
 
-Le point central de notre service est notre serveur, gardant tous les messages (sauf s’ils sont supprimés par l’utilisateur bien entendu) permettant donc d’apporter une solution viable aux deux points expliqués ci-dessus.
+Le point central de notre service est notre serveur, gardant tous les messages (sauf s’ils sont supprimés par l’utilisateur bien entendu) permettant donc d’apporter une solution viable aux deux points expliqués ci-dessus. Lorsqu'un utilisateur souhaite envoyer un message, il utilise notre application, qui communique avec le serveur. Il va alors enregistrer le message dans ses bases de données, puis le transférer à l'utilisateur voulu. 
 	
 Le sujet était donc lancé : notre service devait permettre d’envoyer des messages depuis les plateformes suivantes :
 \begin{itemize}
@@ -65,9 +70,21 @@ Le sujet était donc lancé : notre service devait permettre d’envoyer des mes
 
 Ces plateformes se synchronisent avec le serveur principal permettant de récupérer et où mettre à jour les informations modifiées d’un compte depuis telle ou telle plateforme. Mais si ces services que les concurrents ne possèdent pas permettent de créer l’écart, ils nous ont en réalité énormément retardé sur la date de sortie, créant des problèmes que nous n’envisagions pas au premier abord. En effet, grâce à notre système, un compte utilisateur peut-être accédé par plusieurs plateformes. Si un utilisateur possède un iPhone et un iPad par exemple, il doit pouvoir utiliser les deux à sa convenance.  Se pose alors le problème de la synchronisation ! En effet, si je n’utilise pas mon iPad pendant quelques jours, mais activement l’application sur mon téléphone,  au moment du rallumage de l’iPad, il sera momentanément désynchronisé. Toute la difficulté sera donc de rapatrier uniquement les bonnes informations provenant du serveur et de mettre à jour l’iPad.
 
+Afin d'effectuer tout ce travail, nous étions initialement huit personnes, dont les noms et la description de leur tâche se trouve ci-dessous :
+	\begin{itemize}
+		\item Quentin Calvez : Initiateur du projet, c'est la personne possédant le plus de connaissances techniques. C'est également le concepteur du serveur et du projet sans qui rien n'aurait commencé. Il été également en charge de l'application Windows Phone 7 étant amoureux des technologies microsoft.
+		\item \emph{Marc Viricel :} Co-initiateur, il s'occupait entre autre du développement sous Blackberry.
+		\item \emph{Benjamin Bouvier :} Co-développeur Blackberry, en binôme avec Marc.
+		\item \emph{Alpha Barry :} Développeur Android - il était seul ayant déjà de bonnes connaissances dans la plateforme.
+		\item \emph{Romain Arnaud :} Co-développeur iPhone.
+		\item \emph{Benjamin Planche :} Développeur site web.
+		\item \emph{Pierre Laurac :} Co-développeur iPhone.
+	\end{itemize}
 \section{Un projet complet assurant un apprentissage continu}
-	
-Le sujet est simple, mais nous avons cependant soulevé un certain nombre de problèmes en très peu de temps. En plus de ceux énoncés dans la section précédente, intervient également les langages de programmation. En effet, chaque plateforme possède son propre langage, et il a donc fallu que chaque équipe de développeur du projet se spécialise dans un domaine particulier. 
+% parler des problèmes techniques dans la section
+% je pense ici à la relance automatique de requêtes
+
+Le sujet est simple, mais nous avons cependant soulevé un certain nombre de problèmes en très peu de temps. En plus de ceux énoncés dans la section précédente, intervient également les langages de programmation. En effet, chaque plateforme possède son propre langage, et il a donc fallu que chaque équipe de développeur du projet se spécialise dans un langage particulier. 
 
 \subsection{Les problèmes liés au développement}
 Mis à part une ou deux personnes dans le groupe de travail, nous nous étions tous assignés dans un langage que nous souhaitions apprendre car outre le service que nous voulions commercialiser, notre but premier était ici l'apprentissage, et c'était celui de l'iPhone qui m'intéressait plus particulièrement. Je continuerai d'ailleurs par développer uniquement cet aspect dans cette partie.
@@ -150,6 +167,11 @@ Nous passerons un peu de temps à expliquer la complexité de chacune des partie
 - Redmine
 - les mails
 - les réunions
+
+\section{Vers l'infini et au délà}
+	\subsection{L'équipe actuelle}
+	\subsection{L'avancement du projet}
+	\subsection{Le devenir du projet}
 \section{Conclusion}
 
 		Ce PPH a été écrit dans plusieurs buts : 
@@ -165,6 +187,12 @@ Nous passerons un peu de temps à expliquer la complexité de chacune des partie
 		Peut-être que mon approche des projets en groupe été déjà différente en début de cette année, mais je sais qu'elle a énormément évoluée en un an. C'est aussi pourquoi je m'occupe de la coordination des différentes équipes de Klaim à ce jour, puisqu'il est important de le faire, afin de ne pas s'éparpiller comme nous l'avons fait auparavant.
 		
 		Je pense donc qu'il aura été plus qu'intéressant de voir comment nous nous en serions sorti avec nos connaissances actuelles. Ce projet reste bien entendu extra-scolaire d'où la difficulté de l'avancer aussi vite que nous le souhaitons, mais c'est avec plaisir que nous continuons le développement. Nous sommes actuellement à la rechercher de fonds ainsi que de ressources humaines. Nous avons les idées ainsi que le potentiel requis, et nous nous battons pour avancer.
-		
-		
+	
+\newpage	
+\section{Annexes}
+	\begin{itemize}
+		\item capture version iPhone
+		\item capture version web
+		\item capture version WP7
+	\end{itemize}
 \end{document}
