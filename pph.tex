@@ -58,7 +58,7 @@ L'intérêt de ce projet ici est double : il permet de mener une réflexion sur 
 	Nous avions à l’époque quelques concurrents au service, mais notre projet s’étendait au delà de ce qu’ils proposaient. Si leur système propose l’envoie de messages comme le notre, ces derniers ne sont pas sauvegardés sur leurs serveurs. Cela leur pose alors deux problèmes principaux :
 	\begin{itemize}
 		\item Ils ne peuvent proposer un service Web permettant la lecture des messages envoyés et reçus, ainsi que l’envoie de nouveaux messages. C'est un atout très important à nos yeux, et nous essayons de nous démarquer entre autre grâce à ce point.
-		\item Les messages sont stockés sur le téléphone des personnes utilisant le service uniquement. Si une personne change de téléphone, ils risquent alors de perdre les conversations existantes. Avec Klaim, ceci ne peut exister puisque si vous changez de téléphone, vous pouvez retrouver tous les messages que vous aviez précédemment, étant stockés sur nos serveurs.
+		\item Les messages sont stockés sur le téléphone des personnes utilisant le service uniquement. Si une personne change de téléphone, ils risquent alors de perdre les conversations existantes. Avec Klaim, ceci ne peut exister puisque si vous changez de téléphone, vous pouvez retrouver tous les messages que vous aviez précédemment, étant stockés sur nos serveurs.\\
 	\end{itemize}
 
 Le point central de notre service est notre serveur, gardant tous les messages (sauf s’ils sont supprimés par l’utilisateur bien entendu) permettant donc d’apporter une solution viable aux deux points expliqués ci-dessus. Lorsqu'un utilisateur souhaite envoyer un message, il utilise l'une de nos applications, communiquant avec le serveur qui va alors enregistrer le message dans ses bases de données, puis le transférer à l'utilisateur voulu. \\
@@ -69,7 +69,7 @@ Le sujet était donc lancé : notre service devait permettre d’envoyer des mes
 		\item Android
 		\item Windows Phone Mobile
 		\item BlackBerry
-		\item Site web
+		\item Site web\\
 	\end{itemize}
 
 Ces plateformes se synchronisent avec le serveur principal permettant de récupérer et où mettre à jour les informations modifiées d’un compte depuis telle ou telle plateforme. Mais si ces services que les concurrents ne possèdent pas permettent de créer un avantage comparatif, ils nous ont en réalité énormément retardé sur la date de sortie, créant des problèmes que nous n’envisagions pas au premier abord. En effet, grâce à notre système, un compte utilisateur peut-être accédé par plusieurs plateformes. Si un utilisateur possède un iPhone et un iPad par exemple, il doit pouvoir utiliser les deux à sa convenance.  Se pose alors le problème de la synchronisation ! En effet, si je n’utilise pas mon iPad pendant quelques jours, mais activement l’application sur mon téléphone,  au moment du rallumage de l’iPad, il sera momentanément désynchronisé. Toute la difficulté sera donc de rapatrier uniquement les bonnes informations provenant du serveur et de mettre à jour l’iPad.\\
@@ -104,7 +104,7 @@ Chaque plateforme possède donc un langage spécifique (l'Objective-C et Cocoa p
 \begin{itemize}
 	\item Les requêtes au serveur (Request Layer sur le schéma)
 	\item La base de données (DB Layer sur le Schéma)
-	\item L'interface Graphique
+	\item L'interface Graphique\\
 \end{itemize}
 Nous passerons un peu de temps à expliquer la complexité de chacune des parties citées ci-dessus.
 		\paragraph{Les requêtes au serveur}
@@ -112,43 +112,68 @@ Nous passerons un peu de temps à expliquer la complexité de chacune des partie
 		
 		L'un des plus gros changements est survenu lorsque j'ai du programmer le reprise de requêtes. Dans un environnement aussi mobile, nous travaillons énormément avec le serveur. Cependant, que se passe-t-il quand aucun réseau n'est disponible ? Certaines requêtes doivent-être sauvegardée, d'autre mise de côté pendant un certain temps. Pouvons-nous les enregistrer en base de données ? Quelle est la durée de vie de ces requêtes, et comment le savoir ? Nous sommes parvenus à un système pour l'ensemble de l'application ou nous traitons avec des objets génériques possédants pouvant être sauvegardé en BD. Selon le type de requête, sa durée de vie est changée accordement (au moment ou l'application est tuée, ou quand l'utilisateur se délogue, etc.)  	\\
 		
-		C'est dans ce cas très précis que nous pouvons voir l'importance des projets d'urbanisation que nous avons lors de notre quatrième année. Au début du projet, puisque nous n'avions pas fait de conception générale ni détaillée, nous nous sommes lancé dans un code peu propre, non maintenable, et peu enclin aux changements. Je pense qu'il est cependant impossible de se rendre compte de l'importance d'une bonne conception sans s'être une fois confronté au problème. \\
+		C'est dans ce cas très précis que nous pouvons voir l'importance des projets d'urbanisation que nous avons lors de notre quatrième année. Au début du projet, puisque nous n'avions fait ni conception générale, ni de conception détaillée, nous nous sommes lancé dans un code peu propre, non maintenable, et peu enclin aux changements. Je pense qu'il est cependant impossible de se rendre compte de l'importance d'une bonne conception sans s'être une fois confronté au problème. \\
+		
+		C'est donc précisément ce pourquoi il est indispensable de porter un regard critique sur notre formation et ce genre de projet est indispensable pour le faire. Je me souviens d'une conversation en fin de troisième année avec un quatrième année qui m'a dit : "tu seras changé en fin de quatrième année, tu ne t'en apercevras pas tout au long, mais si tu compares tes aptitudes à travailler entre le début et la fin, tu verras l'importante évolution". Et il avait raison.\\
 				
 		\paragraph{La base de données}
-		Les bases de données sont un moyen efficace et simple à mettre en oeuvre afin de sauvegarder des informations de manière statique. Une première approche aurait donc été de reprendre une base dite classique avec l'approche que nous avions vu en cours. Ce n'est cependant pas le cas ici.\\
+		Les bases de données sont un moyen efficace et simple à mettre en oeuvre afin de sauvegarder des informations de manière statique. Une première approche aurait donc été de reprendre une base dite classique avec l'approche que nous avions vu en cours (i.e. couche orientée services métiers, etc.). Ce n'est cependant pas le cas ici.\\
+			
+		Toujours dans une volonté d'apprendre ce langage, j'ai décidé d'utiliser Coredata, qui est l'outils de prédilection d'Apple pour les bases de données. Coredata est une surcouche logicielle pour les bases de données et permet une sérialisation immédiate des objets vers la base. Cette simplification a été dans un premier temps un vrai casse-tête, tellement la logique est différente de celle d'une base normale. \\
 		
-		Toujours dans une volonté d'apprendre ce langage, j'ai décidé d'utiliser Coredata, qui est l'outils de prédilection d'Apple pour les bases de données. Coredata est une base de données déguisées, en ce sens où Apple met à disposition des développeurs des moyens ``simplifiés '' mais utilise en réalité une base de données. Nous utilisons donc des appels de fonctions mis à notre disposition par Apple, qui offre une surcouche à une base de données. Cette simplification a été dans un premier temps un vrai casse-tête, tellement la logique est différente de celle d'une base normale. Cependant, aujourd'hui je ne regrette en rien ce choix de développement.\\
+		Malheureusement, en raison de l'architecture de notre application, mais également de la faible quantité de mémoire à notre disposition dans les téléphones, attaquer les données depuis le thread principal (celui de l'interface) amène à une faible expérience utilisateur, l'interface étant lente, voir bloquée. C'est donc naturellement que je me suis tourné vers le thread pour m'occuper de cela. Il m'a fallu près de six mois pour trouver les paramètres optimaux afin de pouvoir utiliser Coredata de façon optimal, en raison de la concurrence d'accès au données, donnant de temps à autre des données incohérente, ou faisant cracher l'application.\\
+		
+		Nous apprenons le multitâche en troisième année ainsi que les problèmes de synchronisation, mais nous sortions ici des sentiers battus. Bien qu'une surcouche du C, l'objective-C reste un langage orienté objet, possédant ainsi ses propres implémentations  des réponses classiques aux problèmes de synchronisation multi-thread. Il a fallu dans un premier temps rechercher sur le forums, mais cette solution est veine et parfois fortement trompeuse. Les réponses étaient cachées dans de nombreuses documentations, ce qui m'a fortement rappelé ces TPs d'architecture !\\
 		
 		\paragraph{L'interface Graphique}
-		L'interface graphique a de tout temps été ce que je préférais de moins mais cet élément est cependant indispensable puisque sans elle, nous n'aurions aucun utilisateur. Il est tout a fait envisageable de réaliser une interface non complexe, et c'est ce qui a été fait dans un premier temps. Cependant, nous souhaitions, dans un soucis de simplification d'utilisation pour l'utilisateur final, de reprendre entièrement l'interface de l'application des SMS de la plateforme sur laquelle nous nous trouvions. Ceci représente un challenge de taille puisqu'Apple est réellement maniaque à ce niveau là. \\
+		L'interface graphique a de tout temps été ce que je préférais de moins mais cet élément est cependant indispensable puisque sans elle, l'utilisateur ne pourrait interagir avec le programme ! Il est tout a fait envisageable de réaliser une interface non complexe, et c'est ce qui a été fait dans un premier temps. Cependant, nous souhaitions, dans un soucis de simplification d'utilisation pour l'utilisateur final, de reprendre entièrement l'interface de l'application des SMS de la plateforme sur laquelle nous nous trouvions. Ceci représente un challenge de taille puisqu'Apple est réellement maniaque à ce niveau là. \\
 		
-		Nous avons cependant aujourd'hui une interface réellement identique, et quand j'utilise l'un des deux services (SMS ou Klaim) il m'est difficile de savoir quelle application je suis en train d'utiliser.\\
+		Nous avons cependant aujourd'hui une interface réellement identique, et quand j'utilise l'un des deux services (SMS ou Klaim) il m'est difficile de savoir quelle application je suis en train d'utiliser. Ce travail a été principalement réalisé par Quentin\\
 		
 \subsubsection{La problématique du développement multiplateforme}
-		Ceci est l'un des points les plus important du document, puisqu'il parle d'une problématique d'envergure dans le monde de l'informatique d'aujourd'hui. De plus en plus de personnes ont des smartphones. Les développeurs souhaitent donc développer des applications pour chacune des plateformes, mais cela demande énormément de temps et de connaissance. Si j'ai de bonnes connaissances aujourd'hui pour iOS, je serais incapable de développer pour Androïd sans me plonger dans la documentation et de nombreux tutoriels. \\
+		Ceci est l'un des points les plus important du document, puisqu'il parle d'un problème d'envergure dans le monde de l'informatique d'aujourd'hui. De plus en plus de personnes ont des smartphones. Les développeurs souhaitent donc développer des applications pour chacune des plateformes, mais cela demande énormément de temps et de connaissance. Si j'ai de bonnes connaissances aujourd'hui pour iOS, je serais incapable de développer pour Androïd sans me plonger dans la documentation et de nombreux tutoriels. \\
 		
 		C'est pour cette raison que nous étions autant de monde sur le projet. Il y avait initialement deux personnes par plateforme afin de combler le manque de connaissances que nous avions initialement.  C'est aujourd'hui l'une des plus grandes problématiques du moment avec la poussée de téléphones mobiles au sein de la société. Devant ce problème, des solutions ont été développées mais posent encore certains problèmes : 
 		\begin{itemize}
 			\item Réaliser un site web mobile permet de réduire considérablement le développement puisque le technologies à utiliser sont connues et nous n'avons qu'un seul code à écrire pour l'ensemble des plateformes. Cependant, nous ne pouvons rien sauvegarder sur la mémoire interne du téléphone ce qui peut être réellement problématique et critique selon le type d'applications que nous souhaitons développer, et nous n'avons surtout pas accès aux notifications, ces messages permettant d'indiquer à l'utilisateur un évènement particulier. 
-			\item Il existe aujourd'hui des Framework permettant de réduire la charge de travail mais le résultat obtenu n'est pas aussi satisfaisant que celui d'une application dite native.
+			\item Il existe aujourd'hui des Framework permettant de réduire la charge de travail mais le résultat obtenu n'est pas aussi satisfaisant que celui d'une application dite native.\\
 		\end{itemize}
-%\subsubsection{Un apprentissage continu}
+		
+		L'AEDI\footnote{l'Association des Etudiants du Département Informatique} organise régulièrement des conférences thématiques où des entreprises se déplacent pour nous parler d'un sujet particulier. C'est à cette occasion qu'une entreprise est venu nous parler de ce problème particulier, et ils font face aux mêmes problèmes que nous. J'en ai donc profité pour aller leur parler à la fin et leur poser quelques questions. Leur avis a été le même que le notre : dans notre contexte applicatif, nous n'avons d'autre moyen que du développement natif pour une expérience utilisateur maximale, ce qui signifie donc du développement compliqué et des équipes spécifiques pour cela.
+		
 \subsubsection{Un cahier des charges évoluant constamment}
 		Un autre soucis important auquel nous avons été confronté initialement était le manque d'information sur ce que nous devions faire. Nous connaissions les idées directrices mais c'était tout. Nous apprenons lors de nos projets en école qu'il est important de bien étudier l'ensemble du projet afin de réaliser une conception répondant à toutes les exigences fonctionnelles comme non fonctionnelles. Une simple modification peut avoir d'importantes répercutions. \\
 			
 		C'est exactement le problème que nous avons eu pour diverses raisons. Premièrement parce que nous avons eu de nombreux problèmes auxquels il a fallu trouver une solution. Ces dernières apportaient parfois les modifications dont nous parlions précédemment. Deuxièmement car nous n'avons pas réellement effectué de conception générale pour l'ensemble du projet. Nous demandions uniquement au chef de projet quelle était l'étape suivante une fois que nous avions terminé une partie. Cette façon de faire à posé de nombreux soucis et nous avons du constamment apporté des modifications à ce qui avait déjà été fait.\\
 		
-		Nous n'imaginions tout simplement pas l'ampleur du projet et c'est un peu pour cette raison que cela s'est passé ainsi.
-\subsection{Les problèmes liés au management de l'équipe}
-\subsubsection{Une avancé difficile}
-\subsubsection{Peu de connaissance en la matière}
+		Il aurait fallu idéalement que nous travaillions tous sur le cahier des charges, afin de l'étudier correctement, en relevant les besoins de l'ensemble du groupe. Bien que notre projet se décompose en sous-projets ayant cependant le même but, nous aurions pu faire une conception générale simplifiant ainsi l'ensemble des équipes. Au lieu de ça, nous nous sommes tous lancé dans notre architecture, ayant tous des problèmes. Toutes les plateformes ont aujourd'hui une conception qui se ressemble, mais nous aurions gagné énormément de temps et d'énergie si elle avait été faite initialement. \\
+		
+		Lors de l'un des premiers projets de quatrième année ("DevOO"), nous nous sommes confrontés à un problème similaire. C'était le premier projet de programmation en hexanome, et il a fallu gérer l'ensemble du groupe, répartir les tâches à réaliser, obtenir une conception générale détaillée. Cela a été fait correctement mais malgré cela nous avons été en retard et il a fallu travailler la nuit pour finir le projet. Nous travaillions cependant sur le même projet tous ensemble, à l'inverse de Klaim ou chaque plateforme était un projet à part entière. Nous ne pouvions en aucun cas réutiliser des bouts de code de telle ou telle plateforme, même entre BlackBerry et Android, bien que tous les deux utilisant Java !\\
+		
+	\subsection{Les problèmes liés au management de l'équipe}
+
+	Nous avons principalement parlé des problèmes techniques, mais une grosse partie des dysfonctionnements auxquels nous avons été confrontés était liée à l. Nous allons développer ceci dans la partie suivante. 
+	
+		\subsubsection{Une avancé difficile}
+		Le principe du fil rouge est de remplacer un TP afin que nous dégager le temps de découvrir soit de nouvelles technologies soit de développer des connaissances dans un domaine particulier. En ce sens, il ne devrait en théorie dépasser une cinquantaine d'heure par personne, mais dans la réalité ce n'est pas ce qu'il se passe. D'autant plus qu'il est commun de ne voir que quelques personnes travailler réellement sur le projet. \\
+		
+		Dans notre cas, nous avions en quelque sorte 5 fil rouge à mener de face, ce qui a grandement complexifié la situation. Nous restons des étudiants et il a fallu jongler entre les projets d'école et Klaim, ce qui n'a pas été chose aisé. La majeure partie de nos week-end était consacrés a notre système de messagerie, et nous travaillions régulièrement chez moi les samedi. Malgré cela, nous n'avancions que très peu.\\ 
+		
+		Quand nous décidions d'instaurer quelques jalons afin de se motiver, nous tombions sur des problèmes plus importants que nous tentions de régler. Il n'y avait donc pas de réelle satisfaction, tellement la fin semblait loin. Lors de la présentation en amphi du projet, nous n'avons pu montrer un produit BlackBerry assez concluant, et au lieu de ça nous avons expliqué pourquoi il était aussi compliqué et peu agréable de travailler pour ça ! \\
+		
+		\subsubsection{Peu de connaissance en la matière}
+		Un autre but du fil rouge est de montrer la difficulté du travail en groupe, mais notre éclatement en sous-projets a en réalité empêcher cela. Plus grave encore, nous travaillions principalement en binôme, ce qui fait que nous n'avions pas de réel regard sur le travail des autres, ni de leur avancement. Ce dernier point était plus ennuyeux, puisque nous aurions pu en réalité tirer parti d'une compétition interne. \\
+		
+		Ce projet a essentiellement montré nos faiblesses dans la gestion d'équipe, quelque soit le nombre de personnes dans un projet, et notre besoin d'apprendre à gérer le temps, le stress et les collaborateurs. Le rôle du chef d'équipe était ici plus qu'important, afin de motiver l'ensemble des binômes, de tenir à jour un planning des tâches faîtes et à faire, et de donner des directives claires. Nous n'avons eu cette chance, et aucun de nous ne s'est d'ailleurs proposé pour le faire. \\
+		
+		C'est une des raisons pour laquelle j'étais impatient de me confronter à la quatrième année. Non seulement je voulais montrer aux promotions précédentes que ce n'était pas aussi dur que ce qu'ils disaient (j'avais tort !), mais également et surtout afin d'obtenir ces compétences qui me paraissent réellement importante au sein d'un groupe. Avec le recul, aucun cours ne peut apprendre les bonnes pratiques pour cela, seul le fait d'être confronté au problème en tant que chef de projet à travers des TPs permet de mieux appréhender ce qu'est réellement la gestion de projet.
 
 
 \section{La gestion du temps et du projet}
 		Nous maintenant passé à une analyse que nous pouvons maintenant réalisé puisque nous sommes suffisamment avancé dans notre quatrième année, qui est rappelons le centré autour de la gestion de projet et d'équipe.
 		
-\subsection{Le temps, notre pire ennemi}
-\subsubsection{Un projet long a mener de front avec d'autres}
+	\subsection{Le temps, notre pire ennemi}
+		\subsubsection{Un projet long a mener de front avec d'autres}
 		Une autre problématique importante de notre projet était que celui était extra-scolaire bien que dans le cadre du fil rouge. La troisième année reste une année chargée avec les projets et les examens de fin d'année et devant un projet de cette taille le temps que nous avons afin de programmer est très important. J'ai passé la majeure partie de mes week-end à avancer sur le projet. J'aurai pu être bien plus efficace si j'avais connu le développement iOS avant mais ce n'était pas le cas.
 
 \subsubsection{L'écart des concurrents}
@@ -202,13 +227,24 @@ Nous passerons un peu de temps à expliquer la complexité de chacune des partie
 	\subsection{L'équipe actuelle}
 	Avec le temps, je me suis aperçu que Quentin était un excellent développeur, cependant l'aspect de gestion de projet et de gestion des équipes ne l'intéressait absolument pas. N'étant plus que deux pendant l'été, cela ne posait pas réellement de problèmes. Cependant, avec l'arrivée de nouvelles personnes dans l'équipe, je me suis proposé de m'occuper de ce poste, ce pour quoi Quentin avait l'air favorable. 
 	\subsection{L'avancement du projet}
+	A l'heure de l'écriture de ce PPH, la version web et WP7{Windows Phone 7, système d'exploitation de Microsoft pour les téléphones mobiles} est déjà sur le marché. La version iPhone est en cours de validation pour apparaitre sur l'AppStore\footnote{L'AppStore est le nom du magasin virtuel d'Apple où l'on peut télécharger des applications pour son téléphone} et nous espérons que cette version sera le grand lancement de notre service. \\
+	
+	Le développement de la version Android ayant pris du retard, cette plateforme devrait apparaître sous peu, surtout qu'après le lancement de la version iPhone, nous attendons un réel essor de nombre d'utilisateurs, et nous ne voulons pas léser ces clients potentiels. En effet, ayant déjà pour le moment perdu la version Blackberry, nous ne pouvons nous permettre d'oublier une plateforme supplémentaire, surtout lorsqu'elle est aussi utilisée qu'Android. \\
+	
+	En attendant que la version 1 soit disponible sur Android, nous allons activement spécifier les futures fonctionnalités de l'application. Cela inclura dans un premier temps l'envoi de messages à plusieurs personnes afin de pouvoir converser plus facilement en groupe, puis dans un deuxième temps, il sera intéressant de pouvoir inclure des médias tel que les images ou la voix dans les messages.  
+	
 	\subsection{Le devenir du projet}
+	A l'heure actuelle, nous sommes extrêmement motivés et nous recevons de bons retours de la part des testeurs. Nous avons également montré l'application à quelques professionnels fortement intéressé par le projet et les remontées sont plus qu'encourageantes.  Nous avons cependant peur avec Quentin qu'avec le stage cet été et les départs à l'étranger en cinquième année, nous perdions nos développeurs Android. \\
+	
+	Comme tout projet, nous avons des charges et c'est pourquoi nous cherchons des fonds auprès de sociétés d'investissement - également appelés des Business Angels" ou encore des "incubateurs". Malheureusement, cette recherche n’est pas évidente, mais avec la sortie des applications, nous pensons qu’il sera plus simple de trouver de quoi nous financer.  
+	
+	
 \section{Conclusion}
 
 		Ce PPH a été écrit dans plusieurs buts : 
 		\begin{itemize}
 			\item Montrer dans un premier lieu notre inexpérience dans un projet d'aussi grande envergure, avec autant d'éléments à gérer, que ce soit au niveau de la gestion des ressources humaines, mais également de la conduite d'un projet.
-			\item Porter un regard sur notre formation de quatrième année, fortement axée sur la gestion de projet. 
+			\item Porter un regard sur notre formation de quatrième année, fortement axée sur la gestion de projet. \\
 		\end{itemize}
 		
 		Ce premier point a été largement ressenti tout au long de l'année dernière, d'autant plus que Quentin n'était pas réellement intéressé par cette gestion - c'est en tout cas ainsi que je le percevais. L'ensemble des modifications qui ont été effectuées au cahier des charges a été plus que préjudiciable sur la date de rendu de projet. Nous ne pouvions malheureusement pas imaginer de façon claire et précise ce dans quoi nous nous jetions. C'est pour moi à ce jour le projet qui m'a fat acquérir le plus de compétences aussi bien dans le domaine technique, que dans le domaine des relations humaines, puisqu'il a fallu apprendre à communiquer au sein de notre groupe, bien que nous étions des amis. \\
