@@ -4,18 +4,66 @@
                       % ce package ne se trouve pas dans toutes les
                       % distributions LaTeX
 \usepackage[francais]{babel}
-%\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc} 
 \usepackage[pdftex]{graphicx}
+\usepackage{float}
 
-\title{PPH}
-\author{Pierre Laurac}
-\date\today
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DECLARATION DE LA PAGE DE GARDE
+\def\blurb{%
+  INSA de Lyon \\
+  Département Informatique\\[1em]
+  PPH}
+\def\clap#1{\hbox to 0pt{\hss #1\hss}}%
+\def\ligne#1{%
+  \hbox to \hsize{%
+    \vbox{\centering #1}}}%
+\def\haut#1#2#3{%
+  \hbox to \hsize{%
+    \rlap{\vtop{\raggedright #1}}%
+    \hss
+    \clap{\vtop{\centering #2}}%
+    \hss
+    \llap{\vtop{\raggedleft #3}}}}%
+\def\bas#1#2#3{%
+  \hbox to \hsize{%
+    \rlap{\vbox{\raggedright #1}}%
+    \hss
+    \clap{\vbox{\centering #2}}%
+    \hss
+    \llap{\vbox{\raggedleft #3}}}}%
 \begin{document}
-\maketitle
+\thispagestyle{empty}\vbox to .9\vsize{%
+  \vss
+  \vbox to 1\vsize{%
+    \haut{}{\blurb}{}
+    \vfill
+    \ligne{\Large Retour sur le projet "fil rouge"}
+    \vspace{5mm}
+    \ligne{\Large Pierre LAURAC}
+    \vfill
+    \ligne{%
+      \begin{tabular}{l}
+        Ce PPH sera soutenu le jeudi 26 avril 2012. \\
+        Le jury sera constitué de :
+      \end{tabular}}
+    \vspace{5mm}
+    \ligne{%
+      \begin{tabular}{l}
+       Guillaume \textsc{Beslon} (tuteur)\\
+       Youssef \textsc{Amghar} (directeur du département)\\
+       Lionel \textsc{Brunie} (responsable du fil rouge) \\
+       Guillaume \textsc{Salagnac} (responsable du fil rouge)
+      \end{tabular}
+      }
+    }%
+  \vss
+  }
+  
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Déclaration de la table des mtires
+% Déclaration de la table des matières
 \newpage
 \tableofcontents
 
@@ -26,9 +74,9 @@ Le Projet Personnel en Humanités (PPH) est un projet que tout futur ingénieur 
 
 L'intérêt de mon projet ici est double : il permet de mener une réflexion sur un sujet qui nous tient à coeur, avec lequel nous avons une affinité particulière, mais également de faire un retour sur un projet, une problématique plus grande, qui a été la gestion d'un projet de groupe, la réalisation d'un travail difficile, sans méthodes particulières.\\
 
-Comme vous pouvez le voir dans le schéma ci-dessous, le projet nous allons parler dans ce présent document est décomposé en sous-projets. Je parlerai de temps à autre à la première personne dans ce papier ce qui signifiera que je parle du sous-projet Klaim iOS. Cependant, lorsque le texte sera à la première personne du pluriel, je parlerai cependant du projet dans sa globalité.
+Dans l'ensemble de ce document, le texte sera à la premier personne du singulier afin de pouvoir parler de mon ressenti ou de mon travail sur le sous projet Klaim pour iPhone. Le reste du temps, cela sera à la première personne du pluriel, afin de parler du projet dans sa globalité, ainsi que de l'ensemble des personnes y aillant travaillé.\\
 
-\includegraphics[width=150px]{Images/klaim.png}
+Ce présent document fera tout d'abord une description du projet Klaim, puis montrera pourquoi il a été très formateur en expliquant un ensemble de problèmes auxquels nous avons été confrontés. Puis nous parlerons de la gestion de projet en réalisant une analyse avec nos cours de quatrième année. Nous terminerons ce papier par un rapide aperçu de ce que nous voulons pour notre application dans les mois à venir.
 
 
 \section{Le commencement}
@@ -75,6 +123,15 @@ Le sujet était donc lancé : notre service devait permettre d’envoyer des mes
 		\item BlackBerry
 		\item Site web\\
 	\end{itemize}
+	
+		\begin{figure}[H]
+  		\begin{center}
+			\includegraphics[width=0.3\textwidth]{Images/klaim.png}
+  			\caption{Ensemble des plateformes initialement supportées}
+  			\label{fig:animals}
+		\end{center}
+	\end{figure}
+
 
 Ces plateformes se synchronisent avec le serveur principal permettant de récupérer et/ou mettre à jour les informations modifiées d’un compte depuis telle ou telle plateforme. Mais si ces services que les concurrents ne possèdent pas permettent de créer un avantage comparatif, ils ont en réalité énormément retardé sur la date de sortie, créant des problèmes que nous n’envisagions pas au premier abord. En effet, grâce à notre système, plusieurs plateformes peuvent accéder à un unique compte. Si un utilisateur possède un iPhone et un iPad par exemple, il doit pouvoir utiliser les deux à sa convenance.  Se pose alors le problème de la synchronisation ! En effet, si je n’utilise pas mon iPad pendant quelques jours, mais activement l’application sur mon téléphone,  au moment du rallumage de l’iPad, il sera momentanément désynchronisé. Toute la difficulté sera donc de rapatrier uniquement les bonnes informations provenant du serveur et de mettre à jour l’iPad.\\
 
@@ -96,7 +153,13 @@ Le sujet est simple, mais nous avons cependant soulevé un certain nombre de pro
 \subsection{Les problèmes liés au développement}
 Mis à part une ou deux personnes dans le groupe de travail, nous nous étions tous affecté un langage que nous souhaitions apprendre car outre le service que nous voulions commercialiser, notre but premier était ici l'apprentissage, et c'était celui de l'iPhone qui m'intéressait plus particulièrement. \\
 
-\includegraphics[width=400px]{Images/schema_general_simplifie.png}
+\begin{figure}[H]
+  		\begin{center}
+			\includegraphics[width=0.8\textwidth]{Images/schema_general_simplifie.png}
+  			\caption{Schéma simplifié de l'architecture générale}
+  			\label{fig:archi}
+		\end{center}
+	\end{figure}
 
 Voici un plan général très synthétique du fonctionnement de notre application. Nous avons essayé de créer une architecture modulaire, utilisant une structure en couche permettant de s'adapter à l'ensemble des plateformes le plus simplement possible. Dans ce cas très précis, il me serait très simple de supprimer la partie interface graphique iPhone, mais de garder les moteurs pour les requêtes et la base de données afin de créer un client lourd pour OS X\footnote{OS X est le nom du système d'exploitation d'Apple, anciennement Mac OS puis Mac OS X} par exemple.\\
 
@@ -270,9 +333,47 @@ Nous passerons un peu de temps à expliquer la complexité de chacune des partie
 	
 \newpage	
 \section{Annexes}
-	\begin{itemize}
-		\item capture version iPhone
-		\item capture version web
-		\item capture version WP7
-	\end{itemize}
+	\subsection{Screenshot iOS}
+	\begin{figure}[H]
+  		\begin{center}
+  			\includegraphics[width=0.9\textwidth]{Images/screenshot_iOS.png}
+  			\caption{Images des principales interfaces de l'application Klaim pour iPhone}
+  			\label{fig:animals}
+		\end{center}
+	\end{figure}
+	
+	\subsection{Screenshot Site Web}
+		\begin{figure}[H]
+  		\begin{center}
+  			\includegraphics[width=1\textwidth]{Images/temp/screenshot/1.png}
+  			\caption{Index du site web}
+  			\label{fig:animals}
+		\end{center}
+	\end{figure}
+	
+	\begin{figure}[H]
+  		\begin{center}
+  			\includegraphics[width=0.7\textwidth]{Images/temp/screenshot/3.png}
+  			\caption{Description des fonctionnalités}
+  			\label{fig:animals}
+		\end{center}
+	\end{figure}
+	
+	\begin{figure}[H]
+  		\begin{center}
+  			\includegraphics[width=1\textwidth]{Images/temp/screenshot/2.png}
+  			\caption{Liste des conversations}
+  			\label{fig:animals}
+		\end{center}
+	\end{figure}
+
+
+\begin{figure}[H]
+  		\begin{center}
+  			\includegraphics[width=1\textwidth]{Images/temp/screenshot/4.png}
+  			\caption{Vue d'une conversation}
+  			\label{fig:animals}
+		\end{center}
+	\end{figure}
+
 \end{document}
